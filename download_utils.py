@@ -45,3 +45,10 @@ def parallel_downloader(version, fns, target_dir):
         for t in threads:
             t.join()
     print("Done")
+
+
+def sequential_downloader(version, fns, target_dir):
+    kill_thread.clear()
+    os.system("mkdir -p {0}".format(target_dir))
+    for fn in fns:
+        download_from_github(version, fn, target_dir)
