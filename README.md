@@ -8,10 +8,26 @@ Follow the instructions on https://hub.docker.com/r/zimovnov/coursera-aml-docker
 
 After that you should see a Jupyter page in your browser.
 
-Click New -> Terminal and execute: `git clone https://github.com/hse-aml/intro-to-dl.git`
+Click **New -> Terminal** and execute: `git clone https://github.com/hse-aml/intro-to-dl.git`
 
-Close the terminal and refresh Jupyter page, you will see intro-to-dl folder, go there, all the necessary notebooks are waiting for you.
+Close the terminal and refresh Jupyter page, you will see **intro-to-dl** folder, go there, all the necessary notebooks are waiting for you.
 
 First you need to download necessary resources, to do that open `download_resources.ipynb` and run cells for your week.
 
 Now you can open a notebook for the corresponding week and work there just like in Coursera Jupyter Environment.
+
+### If Docker doesn't work for you
+We highly recommend to install docker environement, but if it's not an option, you can try to install the necessary python modules yourself.
+
+You will need **Python 3.5+** and **pip** package manager.
+
+To install the necesssary modules run (`requirements.txt` can be found [here](https://github.com/ZEMUSHKA/coursera-aml-docker/blob/master/requirements.txt)):
+```
+pip3 install --upgrade pip
+pip3 install -r requirements.txt
+```
+
+To start Jupyter Notebooks run:
+```
+jupyter notebook
+```
