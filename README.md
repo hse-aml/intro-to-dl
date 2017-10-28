@@ -17,17 +17,18 @@ First you need to download necessary resources, to do that open `download_resour
 Now you can open a notebook for the corresponding week and work there just like in Coursera Jupyter Environment.
 
 ### If Docker doesn't work for you
-We highly recommend to install docker environement, but if it's not an option, you can try to install the necessary python modules yourself.
+We highly recommend to install docker environment, but if it's not an option, 
+you can try to install the necessary python modules with Anaconda.
 
-You will need **Python 3.5+** and **pip** package manager.
+First, install Anaconda with **Python 3.5+** from [here](https://www.anaconda.com/download).
 
-To install the necesssary modules run (`requirements.txt` can be found [here](https://github.com/ZEMUSHKA/coursera-aml-docker/blob/master/requirements.txt)):
+Download `conda_requirements.txt` from [here](https://github.com/ZEMUSHKA/coursera-aml-docker/blob/master/conda_requirements.txt).
+
+Open terminal on Mac/Linux or "Anaconda Prompt" in Start Menu on Windows and run:
 ```
-pip3 install --upgrade pip
-pip3 install -r requirements.txt
+conda config --append channels conda-forge
+conda config --append channels menpo
+conda install --yes --file conda_requirements.txt
 ```
 
-To start Jupyter Notebooks run:
-```
-jupyter notebook
-```
+To start Jupyter Notebooks run `jupyter notebook` on Mac/Linux or "Jupyter Notebook" in Start Menu on Windows.
