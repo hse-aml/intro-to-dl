@@ -41,3 +41,4 @@ class TqdmProgressCallback(keras.callbacks.Callback):
     def on_epoch_end(self, epoch, logs=None):
         logs = logs or {}
         self._set_prog_bar_desc(logs)
+        self.prog_bar.close()
