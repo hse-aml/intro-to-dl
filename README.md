@@ -5,6 +5,8 @@ https://www.coursera.org/learn/intro-to-deep-learning
 Coursera Jupyter Environment can be slow if many learners use it heavily. 
 Our tasks are compute-heavy and we recommend to run them on your hardware for optimal performance.
 
+You will need a computer with at least 4GB of RAM.
+
 There're two options to setup the Jupyter Notebooks locally: Docker container and Anaconda.
 
 ### Docker container option (best for Mac/Linux)
