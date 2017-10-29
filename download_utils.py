@@ -6,20 +6,24 @@ import tqdm
 import requests
 
 
-def download_from_github(version, fn, target_dir):
-    url = "https://github.com/hse-aml/intro-to-dl/releases/download/{0}/{1}".format(version, fn)
+def download_file(url, file_path):
     r = requests.get(url, stream=True)
     total_size = int(r.headers.get('content-length'))
-    full_fn = os.path.join(target_dir, fn)
-    with open(full_fn, 'wb') as f:
+    with open(file_path, 'wb') as f:
         bar = tqdm.tqdm_notebook(total=total_size, unit='B', unit_scale=True)
-        bar.set_description(fn)
-        for chunk in r.iter_content(32*1024):
+        bar.set_description(os.path.split(file_path)[-1])
+        for chunk in r.iter_content(32 * 1024):
             f.write(chunk)
             bar.update(len(chunk))
-    if os.path.getsize(full_fn) != total_size:
+    if os.path.getsize(file_path) != total_size:
         # not full download
-        os.remove(full_fn)
+        os.remove(file_path)
+
+
+def download_from_github(version, fn, target_dir):
+    url = "https://github.com/hse-aml/intro-to-dl/releases/download/{0}/{1}".format(version, fn)
+    file_path = os.path.join(target_dir, fn)
+    download_file(url, file_path)
 
 
 def sequential_downloader(version, fns, target_dir):
