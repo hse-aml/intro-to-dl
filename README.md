@@ -34,7 +34,7 @@ To start Jupyter Notebooks run `jupyter notebook` on Mac/Linux or "Jupyter Noteb
 
 After that you should see a Jupyter page in your browser.
 
-## Prepare resources inside Jupyter Notebooks
+### Prepare resources inside Jupyter Notebooks (for local setups only)
 
 Click **New -> Terminal** and execute: `git clone https://github.com/hse-aml/intro-to-dl.git`
 On Windows you might want to install [Git](https://git-scm.com/download/win). 
