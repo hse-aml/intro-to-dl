@@ -6,7 +6,7 @@ import grading
 
 # code_size = 71
 # img_shape = (38, 38, 3)
-def submit_char_rnn(submission, score, email, token):
+def submit_char_rnn(submission, email, token):
     grader = grading.Grader("cULEpp2NEeemQBKZKgu93A")
     history, samples = submission
     assert len(samples) == 25
