@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import numpy as np
+import tqdm
 import random
 
 
@@ -74,7 +75,7 @@ def test_validation_loss(decoder, s, generate_batch, val_img_embeds, val_caption
     np.random.seed(300)
     random.seed(300)
     val_loss = 0
-    for _ in range(1000):
+    for _ in tqdm.tqdm_notebook(range(1000)):
         val_loss += s.run(decoder.loss, generate_batch(val_img_embeds,
                                                        val_captions_indexed,
                                                        32,
