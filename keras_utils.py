@@ -26,7 +26,7 @@ class TqdmProgressCallback(keras.callbacks.Callback):
         for k in self.params['metrics']:
             if k in logs:
                 self.log_values_by_metric[k].append(logs[k])
-        desc = "; ".join("{0}: {1:.3f}".format(k, np.mean(values)) for k, values in self.log_values_by_metric.items())
+        desc = "; ".join("{0}: {1:.4f}".format(k, np.mean(values)) for k, values in self.log_values_by_metric.items())
         self.prog_bar.set_description(desc)
 
     def on_batch_end(self, batch, logs=None):
