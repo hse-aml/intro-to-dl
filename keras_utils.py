@@ -4,6 +4,7 @@ import keras
 import tqdm
 from collections import defaultdict
 import numpy as np
+from keras.models import save_model
 
 
 class TqdmProgressCallback(keras.callbacks.Callback):
@@ -43,3 +44,15 @@ class TqdmProgressCallback(keras.callbacks.Callback):
         self._set_prog_bar_desc(logs)
         self.prog_bar.update(1)  # workaround to show description
         self.prog_bar.close()
+
+
+class ModelSaveCallback(keras.callbacks.Callback):
+
+    def __init__(self, file_name):
+        super(ModelSaveCallback, self).__init__()
+        self.file_name = file_name
+
+    def on_epoch_end(self, epoch, logs=None):
+        model_filename = self.file_name.format(epoch)
+        print("Model saved in {}".format(model_filename))
+        save_model(self.model, model_filename)
