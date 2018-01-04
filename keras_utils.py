@@ -54,5 +54,5 @@ class ModelSaveCallback(keras.callbacks.Callback):
 
     def on_epoch_end(self, epoch, logs=None):
         model_filename = self.file_name.format(epoch)
-        print("Model saved in {}".format(model_filename))
         save_model(self.model, model_filename)
+        print("Model saved in {}".format(model_filename))
