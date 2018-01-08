@@ -4,7 +4,7 @@ import grading
 
 
 # code_size = 71
-# img_shape = (38, 38, 3)
+# img_shape = (38, 38, 3) or (32, 32, 3)
 def submit_autoencoder(submission, score, email, token):
     grader = grading.Grader("9TShnp1JEeeGGAoCUnhvuA")
     encoder, decoder = submission
