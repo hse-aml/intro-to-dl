@@ -3,6 +3,7 @@
 .idea
 readonly
 __pycache__
+*.pyc
 
 # week3
 102flowers.tgz
