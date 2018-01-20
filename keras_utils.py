@@ -28,7 +28,10 @@ class TqdmProgressCallback(keras.callbacks.Callback):
             if k in logs:
                 self.log_values_by_metric[k].append(logs[k])
         desc = "; ".join("{0}: {1:.4f}".format(k, np.mean(values)) for k, values in self.log_values_by_metric.items())
-        self.prog_bar.set_description(desc)
+        if hasattr(self.prog_bar, "set_description_str"):  # for new tqdm versions
+            self.prog_bar.set_description_str(desc)
+        else:
+            self.prog_bar.set_description(desc)
 
     def on_batch_end(self, batch, logs=None):
         logs = logs or {}
