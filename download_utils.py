@@ -81,7 +81,7 @@ def link_all_files_from_dir(src_dir, dst_dir):
         if os.name == "nt":
             shutil.copyfile(src_file, dst_file)
         else:
-            if os.path.exists(dst_file):
+            if os.path.islink(dst_file):
                 os.remove(dst_file)
             os.symlink(os.path.abspath(src_file), dst_file)
 
