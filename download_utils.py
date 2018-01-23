@@ -72,14 +72,18 @@ def sequential_downloader(version, fns, target_dir):
 
 def link_all_files_from_dir(src_dir, dst_dir):
     os.makedirs(dst_dir, exist_ok=True)
+    if not os.path.exists(src_dir):
+        # Coursera "readonly/readonly" bug workaround
+        src_dir = src_dir.replace("readonly", "readonly/readonly")
     for fn in os.listdir(src_dir):
         src_file = os.path.join(src_dir, fn)
         dst_file = os.path.join(dst_dir, fn)
         if os.name == "nt":
             shutil.copyfile(src_file, dst_file)
         else:
-            if not os.path.exists(dst_file):
-                os.symlink(os.path.abspath(src_file), dst_file)
+            if os.path.exists(dst_file):
+                os.remove(dst_file)
+            os.symlink(os.path.abspath(src_file), dst_file)
 
 
 def link_all_keras_resources():
