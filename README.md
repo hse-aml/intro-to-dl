@@ -47,3 +47,16 @@ First you need to download necessary resources, to do that open `download_resour
 and run cells for Keras and your week.
 
 Now you can open a notebook for the corresponding week and work there just like in Coursera Jupyter Environment.
+
+### Using GPU for offline setup (for advanced users)
+- If you have a **Linux host** you can try these instructions for Docker: 
+https://github.com/ZEMUSHKA/coursera-aml-docker#using-gpu-in-your-container-linux-hosts-only
+- The easiest way is to go with Anaconda setup, 
+that doesn't need virtualization and 
+thus works with a GPU on all platforms (including Windows and Mac). 
+You will still have to install NVIDIA GPU driver, CUDA toolkit and CuDNN 
+(requires registration with NVIDIA) 
+on your host machine in order for TensorFlow to work with your GPU: 
+https://www.tensorflow.org/versions/r1.2/install/install_linux#nvidia_requirements_to_run_tensorflow_with_gpu_support
+It can be hard to follow, so you might choose to stick to a CPU version, 
+which is also fine for the purpose of this course.
