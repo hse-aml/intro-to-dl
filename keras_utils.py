@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import keras
+from tensorflow import keras
 import tqdm
 from collections import defaultdict
 import numpy as np
-from keras.models import save_model
+from tensorflow.python.keras.models import save_model
 
 
 class TqdmProgressCallback(keras.callbacks.Callback):
