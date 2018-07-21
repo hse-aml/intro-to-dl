@@ -5,6 +5,9 @@ readonly
 __pycache__
 *.pyc
 
+# week 2
+tensorboard_logs
+
 # week3
 102flowers.tgz
 imagelabels.mat
