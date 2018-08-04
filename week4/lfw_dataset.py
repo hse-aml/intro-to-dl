@@ -3,7 +3,7 @@ import os
 import cv2
 import pandas as pd
 import tarfile
-import tqdm
+import tqdm_utils
 
 
 ATTRS_NAME = "lfw_attributes.txt"  # http://www.cs.columbia.edu/CAVE/databases/pubfig/download/lfw_attributes.txt
@@ -32,7 +32,7 @@ def load_lfw_dataset(
     photo_ids = []
 
     with tarfile.open(RAW_IMAGES_NAME if use_raw else IMAGES_NAME) as f:
-        for m in tqdm.tqdm_notebook(f.getmembers()):
+        for m in tqdm_utils.tqdm_notebook_failsafe(f.getmembers()):
             if m.isfile() and m.name.endswith(".jpg"):
                 # prepare image
                 img = decode_image_from_raw_bytes(f.extractfile(m).read())

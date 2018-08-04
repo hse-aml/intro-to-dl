@@ -1,13 +1,16 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from __future__ import print_function
+import tqdm
 
 
 class SimpleTqdm():
-    def __init__(self, total):
-        self.total = total
+    def __init__(self, iterable=None, total=None, **kwargs):
+        self.iterable = list(iterable) if iterable is not None else None
+        self.total = len(self.iterable) if self.iterable is not None else total
+        assert self.iterable is not None or self.total is not None
         self.current_step = 0
-        self.print_frequency = self.total // 50
+        self.print_frequency = max(self.total // 50, 1)
         self.desc = ""
 
     def set_description_str(self, desc):
@@ -26,3 +29,25 @@ class SimpleTqdm():
 
     def close(self):
         print("\n" + self.desc)
+
+    def __iter__(self):
+        assert self.iterable is not None
+        self.index = 0
+        return self
+
+    def __next__(self):
+        if self.index < self.total:
+            element = self.iterable[self.index]
+            self.update(1)
+            self.index += 1
+            return element
+        else:
+            self.close()
+            raise StopIteration
+
+
+def tqdm_notebook_failsafe(*args, **kwargs):
+    try:
+        return tqdm.tqdm_notebook(*args, **kwargs)
+    except:
+        return SimpleTqdm(*args, **kwargs)
