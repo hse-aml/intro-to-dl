@@ -24,4 +24,4 @@ class SimpleTqdm():
         self.current_step += steps
 
     def close(self):
-        print("\n" + self.desc)
+        print("\n" + (self.desc or ""))
