@@ -74,8 +74,11 @@ def reset_tf_session():
     # close current session
     if curr_session is not None:
         curr_session.close()
-    K.clear_session()  # clear graph
+    # clear graph
+    K.clear_session()
+    # create new session
     config = tf.ConfigProto()
     config.gpu_options.allow_growth = True
-    s = K.set_session(tf.InteractiveSession(config=config))
+    s = tf.InteractiveSession(config=config)
+    K.set_session(s)
     return s
