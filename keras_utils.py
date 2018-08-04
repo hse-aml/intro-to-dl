@@ -1,10 +1,30 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+from __future__ import print_function
 import keras
 import tqdm
 from collections import defaultdict
 import numpy as np
 from keras.models import save_model
+
+
+class SimpleTqdm():
+    def __init__(self, total):
+        self.total = total
+        self.current_step = 0
+        self.print_frequency = self.total // 50
+
+    def set_description_str(self, desc):
+        self.desc = desc
+
+    def update(self, steps):
+        for i in range(steps):
+            self.current_step += 1
+            if self.current_step % self.print_frequency == 0:
+                print("*", end='')
+
+    def close(self):
+        print("\n" + self.desc)
 
 
 class TqdmProgressCallback(keras.callbacks.Callback):
@@ -13,14 +33,18 @@ class TqdmProgressCallback(keras.callbacks.Callback):
         self.epochs = self.params['epochs']
 
     def on_epoch_begin(self, epoch, logs=None):
-        print('Epoch %d/%d' % (epoch + 1, self.epochs))
+        print('\nEpoch %d/%d' % (epoch + 1, self.epochs))
         if "steps" in self.params:
             self.use_steps = True
             self.target = self.params['steps']
         else:
             self.use_steps = False
             self.target = self.params['samples']
-        self.prog_bar = tqdm.tqdm_notebook(total=self.target)
+        try:
+            self.prog_bar = tqdm.tqdm_notebook(total=self.target)
+        except Exception:
+            # tqdm is broken on Google Colab
+            self.prog_bar = SimpleTqdm(total=self.target)
         self.log_values_by_metric = defaultdict(list)
 
     def _set_prog_bar_desc(self, logs):
