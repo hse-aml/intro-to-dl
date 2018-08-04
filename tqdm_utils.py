@@ -16,10 +16,12 @@ class SimpleTqdm():
         self.desc = desc
 
     def update(self, steps):
-        for i in range(steps):
-            self.current_step += 1
-            if self.current_step % self.print_frequency == 0:
-                print("*", end='')
+        last_print_step = (self.current_step // self.print_frequency) * self.print_frequency
+        i = 1
+        while last_print_step + i * self.print_frequency <= self.current_step + steps:
+            print("*", end='')
+            i += 1
+        self.current_step += steps
 
     def close(self):
         print("\n" + self.desc)

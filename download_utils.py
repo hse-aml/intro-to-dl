@@ -48,7 +48,7 @@ def download_file(url, file_path):
     incomplete_download = False
     try:
         with open(file_path, 'wb', buffering=16 * 1024 * 1024) as f:
-            for chunk in r.iter_content(1 * 1024 * 1024):
+            for chunk in r.iter_content(4 * 1024 * 1024):
                 f.write(chunk)
                 bar.update(len(chunk))
     except Exception as e:
