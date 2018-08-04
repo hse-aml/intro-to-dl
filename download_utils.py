@@ -90,7 +90,7 @@ def link_all_files_from_dir(src_dir, dst_dir):
             os.symlink(os.path.abspath(src_file), dst_file)
 
 
-def download_all_keras_resources():
+def download_all_keras_resources(keras_models, keras_datasets):
     # Originals:
     # http://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz
     # https://github.com/fchollet/deep-learning-models/releases/download/v0.5/inception_v3_weights_tf_dim_ordering_tf_kernels_notop.h5
@@ -100,7 +100,7 @@ def download_all_keras_resources():
         [
             "inception_v3_weights_tf_dim_ordering_tf_kernels_notop.h5"
         ],
-        "readonly/keras/models"
+        keras_models
     )
     sequential_downloader(
         "v0.2",
@@ -108,7 +108,7 @@ def download_all_keras_resources():
             "cifar-10-batches-py.tar.gz",
             "mnist.npz"
         ],
-        "readonly/keras/datasets"
+        keras_datasets
     )
 
 

@@ -30,6 +30,7 @@ def setup_week2():
     download_github_code("week2/submit.py")
     download_github_code("week2/util.py")
     download_github_code("week2/validation_predictons.txt")
+    setup_keras()
 
 
 def setup_week2_v2():
@@ -37,13 +38,15 @@ def setup_week2_v2():
     download_github_code("week2/v2/grading_utils.py")
     download_github_code("week2/v2/matplotlib_utils.py")
     download_github_code("week2/v2/preprocessed_mnist.py")
+    setup_keras()
 
 
 def setup_week3():
     setup_common()
     download_github_code("week3/grading_utils.py")
     import download_utils
-    download_utils.download_week_3_resources(".")
+    download_utils.download_week_3_resources("../readonly/week3")
+    setup_keras()
 
 
 def setup_week4():
@@ -52,7 +55,7 @@ def setup_week4():
     download_github_code("week4/submit.py")
     download_github_code("week4/submit_honor.py")
     import download_utils
-    download_utils.download_week_4_resources(".")
+    download_utils.download_week_4_resources("../readonly/week4")
 
 
 def setup_week5():
@@ -68,4 +71,10 @@ def setup_week6():
     download_github_code("week6/grading_utils.py")
     download_github_code("week6/utils.py")
     import download_utils
-    download_utils.download_week_6_resources(".")
+    download_utils.download_week_6_resources("../readonly/week6")
+    setup_keras()
+
+
+def setup_keras():
+    import download_utils
+    download_utils.download_all_keras_resources("../readonly/keras/models", "../readonly/keras/datasets")
