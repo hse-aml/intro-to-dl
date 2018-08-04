@@ -8,6 +8,7 @@ class SimpleTqdm():
         self.total = total
         self.current_step = 0
         self.print_frequency = self.total // 50
+        self.desc = ""
 
     def set_description_str(self, desc):
         self.desc = desc
@@ -24,4 +25,4 @@ class SimpleTqdm():
         self.current_step += steps
 
     def close(self):
-        print("\n" + (self.desc or ""))
+        print("\n" + self.desc)
