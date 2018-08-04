@@ -8,6 +8,7 @@ import time
 from functools import wraps
 import traceback
 tqdm.monitor_interval = 0  # workaround for https://github.com/tqdm/tqdm/issues/481
+from tqdm_utils import SimpleTqdm
 
 
 # https://www.saltycrane.com/blog/2009/11/trying-out-retry-decorator-python/
@@ -39,7 +40,10 @@ def retry(ExceptionToCheck, tries=4, delay=3, backoff=2):
 def download_file(url, file_path):
     r = requests.get(url, stream=True)
     total_size = int(r.headers.get('content-length'))
-    bar = tqdm.tqdm_notebook(total=total_size, unit='B', unit_scale=True)
+    try:
+        bar = tqdm.tqdm_notebook(total=total_size, unit='B', unit_scale=True)
+    except Exception:
+        bar = SimpleTqdm(total=total_size)
     bar.set_description(os.path.split(file_path)[-1])
     incomplete_download = False
     try:
@@ -84,6 +88,76 @@ def link_all_files_from_dir(src_dir, dst_dir):
             if os.path.islink(dst_file):
                 os.remove(dst_file)
             os.symlink(os.path.abspath(src_file), dst_file)
+
+
+def download_all_keras_resources():
+    # Originals:
+    # http://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz
+    # https://github.com/fchollet/deep-learning-models/releases/download/v0.5/inception_v3_weights_tf_dim_ordering_tf_kernels_notop.h5
+    # https://s3.amazonaws.com/img-datasets/mnist.npz
+    sequential_downloader(
+        "v0.2",
+        [
+            "inception_v3_weights_tf_dim_ordering_tf_kernels_notop.h5"
+        ],
+        "readonly/keras/models"
+    )
+    sequential_downloader(
+        "v0.2",
+        [
+            "cifar-10-batches-py.tar.gz",
+            "mnist.npz"
+        ],
+        "readonly/keras/datasets"
+    )
+
+
+def download_week_3_resources(save_path):
+    # Originals:
+    # http://www.robots.ox.ac.uk/~vgg/data/flowers/102/102flowers.tgz
+    # http://www.robots.ox.ac.uk/~vgg/data/flowers/102/imagelabels.mat
+    sequential_downloader(
+        "v0.3",
+        [
+            "102flowers.tgz",
+            "imagelabels.mat"
+        ],
+        save_path
+    )
+
+
+def download_week_4_resources(save_path):
+    # Originals
+    # http://www.cs.columbia.edu/CAVE/databases/pubfig/download/lfw_attributes.txt
+    # http://vis-www.cs.umass.edu/lfw/lfw-deepfunneled.tgz
+    # http://vis-www.cs.umass.edu/lfw/lfw.tgz
+    sequential_downloader(
+        "v0.4",
+        [
+            "lfw-deepfunneled.tgz",
+            "lfw.tgz",
+            "lfw_attributes.txt"
+        ],
+        save_path
+    )
+
+
+def download_week_6_resources(save_path):
+    # Originals:
+    # http://msvocds.blob.core.windows.net/annotations-1-0-3/captions_train-val2014.zip
+    sequential_downloader(
+        "v0.1",
+        [
+            "captions_train-val2014.zip",
+            "train2014_sample.zip",
+            "train_img_embeds.pickle",
+            "train_img_fns.pickle",
+            "val2014_sample.zip",
+            "val_img_embeds.pickle",
+            "val_img_fns.pickle"
+        ],
+        save_path
+    )
 
 
 def link_all_keras_resources():

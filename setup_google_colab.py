@@ -14,6 +14,22 @@ def setup_common():
     download_github_code("keras_utils.py")
     download_github_code("grading.py")
     download_github_code("download_utils.py")
+    download_github_code("tqdm_utils.py")
+
+
+def setup_week1():
+    setup_common()
+    download_github_code("week1/target.npy")
+    download_github_code("week1/train.npy")
+
+
+def setup_week2():
+    setup_common()
+    download_github_code("week2/matplotlib_utils.py")
+    download_github_code("week2/preprocessed_mnist.py")
+    download_github_code("week2/submit.py")
+    download_github_code("week2/util.py")
+    download_github_code("week2/validation_predictons.txt")
 
 
 def setup_week2_v2():
@@ -21,3 +37,35 @@ def setup_week2_v2():
     download_github_code("week2/v2/grading_utils.py")
     download_github_code("week2/v2/matplotlib_utils.py")
     download_github_code("week2/v2/preprocessed_mnist.py")
+
+
+def setup_week3():
+    setup_common()
+    download_github_code("week3/grading_utils.py")
+    import download_utils
+    download_utils.download_week_3_resources(".")
+
+
+def setup_week4():
+    setup_common()
+    download_github_code("week4/lfw_dataset.py")
+    download_github_code("week4/submit.py")
+    download_github_code("week4/submit_honor.py")
+    import download_utils
+    download_utils.download_week_4_resources(".")
+
+
+def setup_week5():
+    setup_common()
+    download_github_code("week5/data_copyright")
+    download_github_code("week5/mtg_card_names.txt")
+    download_github_code("week5/names")
+    download_github_code("week5/submit.py")
+
+
+def setup_week6():
+    setup_common()
+    download_github_code("week6/grading_utils.py")
+    download_github_code("week6/utils.py")
+    import download_utils
+    download_utils.download_week_6_resources(".")
