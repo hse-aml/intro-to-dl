@@ -60,3 +60,19 @@ on your host machine in order for TensorFlow to work with your GPU:
 https://www.tensorflow.org/versions/r1.2/install/install_linux#nvidia_requirements_to_run_tensorflow_with_gpu_support
 It can be hard to follow, so you might choose to stick to a CPU version, 
 which is also fine for the purpose of this course.
+
+### Running on Google Colab (not thoroughly tested)
+Google has released its own flavour of Jupyter called Colab, which has free GPUs!
+
+Here's how you can use it:
+1. Open https://colab.research.google.com
+2. Click **GITHUB** tab, paste https://github.com/hse-aml/intro-to-dl and press Enter
+3. Choose the notebook you want to open, e.g. week2/v2/mnist_with_keras.ipynb
+4. Click **File -> Save a copy in Drive...** to save your progress in Google Drive
+5. Click **Runtime -> Change runtime type** and select **GPU** in Hardware accelerator box
+6. Execute the following code in the first cell:
+```python
+! wget https://raw.githubusercontent.com/hse-aml/intro-to-dl/master/setup_google_colab.py -O setup_google_colab.py
+import setup_google_colab
+setup_google_colab.setup_week2_v2()  # change to the week you're working on
+```
