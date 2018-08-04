@@ -74,7 +74,7 @@ def reset_tf_session():
     # close current session
     if curr_session is not None:
         curr_session.close()
-    # clear graph
+    # reset graph
     K.clear_session()
     # create new session
     config = tf.ConfigProto()
