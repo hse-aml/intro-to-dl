@@ -18,7 +18,3 @@ def load_dataset(flatten=False):
         X_test = X_test.reshape([X_test.shape[0], -1])
 
     return X_train, y_train, X_val, y_val, X_test, y_test
-
-
-
-
