@@ -1,13 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import tqdm
 from collections import defaultdict
 import numpy as np
 from keras.models import save_model
 import tensorflow as tf
 import keras
 from keras import backend as K
-from tqdm_utils import SimpleTqdm
+import tqdm_utils
 
 
 class TqdmProgressCallback(keras.callbacks.Callback):
@@ -23,11 +22,7 @@ class TqdmProgressCallback(keras.callbacks.Callback):
         else:
             self.use_steps = False
             self.target = self.params['samples']
-        try:
-            self.prog_bar = tqdm.tqdm_notebook(total=self.target)
-        except Exception:
-            # tqdm is broken on Google Colab
-            self.prog_bar = SimpleTqdm(total=self.target)
+        self.prog_bar = tqdm_utils.tqdm_notebook_failsafe(total=self.target)
         self.log_values_by_metric = defaultdict(list)
 
     def _set_prog_bar_desc(self, logs):

@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import numpy as np
-import tqdm
 import random
 import tqdm_utils
 
@@ -77,16 +76,10 @@ def test_validation_loss(decoder, s, generate_batch, val_img_embeds, val_caption
     random.seed(300)
     val_loss = 0
     batches_for_eval = 1000
-    try:
-        bar = tqdm.tqdm_notebook(total=batches_for_eval)
-    except:
-        bar = tqdm_utils.SimpleTqdm(total=batches_for_eval)
-    for _ in range(batches_for_eval):
+    for _ in tqdm_utils.tqdm_notebook_failsafe(range(batches_for_eval)):
         val_loss += s.run(decoder.loss, generate_batch(val_img_embeds,
                                                        val_captions_indexed,
                                                        32,
                                                        20))
-        bar.update(1)
-    bar.close()
     val_loss /= 1000.
     return val_loss
