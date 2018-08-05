@@ -61,7 +61,7 @@ https://www.tensorflow.org/versions/r1.2/install/install_linux#nvidia_requiremen
 It can be hard to follow, so you might choose to stick to a CPU version, 
 which is also fine for the purpose of this course.
 
-### Running on Google Colab (not thoroughly tested)
+### Running on Google Colab (tested for all weeks)
 Google has released its own flavour of Jupyter called Colab, which has free GPUs!
 
 Here's how you can use it:
