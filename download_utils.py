@@ -84,7 +84,8 @@ def link_all_files_from_dir(src_dir, dst_dir):
         else:
             if os.path.islink(dst_file):
                 os.remove(dst_file)
-            os.symlink(os.path.abspath(src_file), dst_file)
+            if not os.path.exists(dst_file):
+                os.symlink(os.path.abspath(src_file), dst_file)
 
 
 def download_all_keras_resources(keras_models, keras_datasets):
