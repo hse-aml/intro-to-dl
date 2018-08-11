@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
 import tqdm
+tqdm.monitor_interval = 0  # workaround for https://github.com/tqdm/tqdm/issues/481
 
 
 class SimpleTqdm():

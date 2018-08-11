@@ -2,12 +2,10 @@
 # -*- coding: utf-8 -*-
 import os
 import shutil
-import tqdm
 import requests
 import time
 from functools import wraps
 import traceback
-tqdm.monitor_interval = 0  # workaround for https://github.com/tqdm/tqdm/issues/481
 import tqdm_utils
 
 

@@ -4,10 +4,10 @@ import os
 import queue
 import threading
 import zipfile
-import tqdm
 import cv2
 import numpy as np
 import pickle
+import tqdm_utils
 
 
 def image_center_crop(img):
@@ -53,7 +53,7 @@ def apply_model(zip_fn, model, preprocess_for_model, extensions=(".jpg",), input
 
     def reading_thread(zip_fn):
         zf = zipfile.ZipFile(zip_fn)
-        for fn in tqdm.tqdm_notebook(zf.namelist()):
+        for fn in tqdm_utils.tqdm_notebook_failsafe(zf.namelist()):
             if kill_read_thread.is_set():
                 break
             if os.path.splitext(fn)[-1] in extensions:
