@@ -24,7 +24,8 @@ def load_lfw_dataset(
 
     # read attrs
     df_attrs = pd.read_csv(ATTRS_NAME, sep='\t', skiprows=1)
-    df_attrs = pd.DataFrame(df_attrs.iloc[:, :-1].values, columns=df_attrs.columns[1:])
+    df_attrs.columns = list(df_attrs.columns)[1:] + ["NaN"]
+    df_attrs = df_attrs.drop("NaN", axis=1)
     imgs_with_attrs = set(map(tuple, df_attrs[["person", "imagenum"]].values))
 
     # read photos
