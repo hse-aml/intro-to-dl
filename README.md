@@ -10,7 +10,7 @@ Here's how you can use it:
 3. Choose the notebook you want to open, e.g. week2/v2/mnist_with_keras.ipynb
 4. Click **File -> Save a copy in Drive...** to save your progress in Google Drive
 5. Click **Runtime -> Change runtime type** and select **GPU** in Hardware accelerator box
-6. Execute the following code in the first cell:
+6. **Execute** the following code in the first cell that downloads dependencies (change for your week number):
 ```python
 ! wget https://raw.githubusercontent.com/hse-aml/intro-to-dl/master/setup_google_colab.py -O setup_google_colab.py
 import setup_google_colab
