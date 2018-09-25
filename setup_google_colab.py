@@ -1,6 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import os
+import subprocess
+import json
+import time
 
 
 def download_github_code(path):
@@ -78,3 +81,12 @@ def setup_week6():
 def setup_keras():
     import download_utils
     download_utils.download_all_keras_resources("../readonly/keras/models", "../readonly/keras/datasets")
+
+
+def expose_port_on_colab(port):
+    os.system("wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip")
+    os.system("unzip ngrok-stable-linux-amd64.zip")
+    os.system("./ngrok http {0} &".format(port))
+    tunnels_json = subprocess.check_output("curl -s http://localhost:4040/api/tunnels", shell=True)
+    time.sleep(5)
+    print("Open {0} to access your {1} port".format(json.loads(tunnels_json)['tunnels'][0]['public_url'], port))
