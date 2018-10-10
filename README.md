@@ -14,9 +14,16 @@ Here's how you can use it:
 ```python
 ! wget https://raw.githubusercontent.com/hse-aml/intro-to-dl/master/setup_google_colab.py -O setup_google_colab.py
 import setup_google_colab
-setup_google_colab.setup_week2_v2()  # change to the week you're working on
-# note on week 2: select setup_week2_v2() if you've started the course after August 13, 2018,
-# otherwise call setup_week2().
+# please, uncomment the week you're working on
+# setup_google_colab.setup_week1()
+# setup_google_colab.setup_week2()
+# setup_google_colab.setup_week3()
+# setup_google_colab.setup_week4()
+# setup_google_colab.setup_week5()
+# setup_google_colab.setup_week6()
+
+# If you're using the old version of the course (check a path of notebook on Coursera, you'll see v1 or v2),
+# use setup_week2_old().
 ```
 7. If you run many notebooks on Colab, they can continue to eat up memory,
 you can kill them with `! pkill -9 python3` and check with `! nvidia-smi` that GPU memory is freed.

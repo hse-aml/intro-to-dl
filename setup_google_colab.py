@@ -27,7 +27,7 @@ def setup_week1():
     download_github_code("week1/train.npy")
 
 
-def setup_week2():
+def setup_week2_old():
     setup_common()
     download_github_code("week2/matplotlib_utils.py")
     download_github_code("week2/preprocessed_mnist.py")
@@ -37,7 +37,7 @@ def setup_week2():
     setup_keras()
 
 
-def setup_week2_v2():
+def setup_week2():
     setup_common()
     download_github_code("week2/v2/grading_utils.py")
     download_github_code("week2/v2/matplotlib_utils.py")
