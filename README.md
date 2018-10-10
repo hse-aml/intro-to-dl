@@ -12,6 +12,7 @@ Here's how you can use it:
 5. Click **Runtime -> Change runtime type** and select **GPU** in Hardware accelerator box
 6. **Execute** the following code in the first cell that downloads dependencies (change for your week number):
 ```python
+! shred -u setup_google_colab.py
 ! wget https://raw.githubusercontent.com/hse-aml/intro-to-dl/master/setup_google_colab.py -O setup_google_colab.py
 import setup_google_colab
 # please, uncomment the week you're working on
