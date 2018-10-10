@@ -9,6 +9,7 @@ import requests
 
 def download_github_code(path):
     filename = path.rsplit("/")[-1]
+    os.system("shred {}".format(filename))
     os.system("wget https://raw.githubusercontent.com/hse-aml/intro-to-dl/master/{} -O {}".format(path, filename))
 
 
