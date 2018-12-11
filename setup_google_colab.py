@@ -14,7 +14,10 @@ def download_github_code(path):
 
 
 def setup_common():
-    os.system("pip install tqdm")
+    if bool(int(os.environ.get("EXPERIMENTAL_TQDM", "0"))):
+        os.system("pip install --force https://github.com/hse-aml/intro-to-dl/releases/download/ColabTqdm/tqdm-colab.zip")
+    else:
+        os.system("pip install tqdm")
     os.system("pip install --upgrade Keras==2.0.6")  # latest version breaks callbacks
     download_github_code("keras_utils.py")
     download_github_code("grading.py")
