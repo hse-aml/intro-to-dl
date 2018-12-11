@@ -47,9 +47,17 @@ class SimpleTqdm():
             raise StopIteration
 
 
-def tqdm_notebook_failsafe(*args, **kwargs):
+def is_colab():
     try:
-        return tqdm.tqdm_notebook(*args, **kwargs)
-    except:
+        import google.colab
+        return True
+    except ImportError:
+        return False
+
+
+def tqdm_notebook_failsafe(*args, **kwargs):
+    if is_colab():
         # tqdm is broken on Google Colab
         return SimpleTqdm(*args, **kwargs)
+    else:
+        return tqdm.tqdm_notebook(*args, **kwargs)
