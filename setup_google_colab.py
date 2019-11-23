@@ -31,13 +31,10 @@ def setup_week1():
     download_github_code("week1/train.npy")
 
 
-def setup_week2_old():
+def setup_week2_honor():
     setup_common()
-    download_github_code("week2/matplotlib_utils.py")
     download_github_code("week2/preprocessed_mnist.py")
-    download_github_code("week2/submit.py")
     download_github_code("week2/util.py")
-    download_github_code("week2/validation_predictons.txt")
     setup_keras()
 
 
