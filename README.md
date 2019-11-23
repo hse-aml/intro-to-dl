@@ -18,13 +18,11 @@ import setup_google_colab
 # please, uncomment the week you're working on
 # setup_google_colab.setup_week1()
 # setup_google_colab.setup_week2()
+# setup_google_colab.setup_week2_honor()
 # setup_google_colab.setup_week3()
 # setup_google_colab.setup_week4()
 # setup_google_colab.setup_week5()
 # setup_google_colab.setup_week6()
-
-# If you're using the old version of the course (check a path of notebook on Coursera, you'll see v1 or v2),
-# use setup_week2_old().
 ```
 7. If you run many notebooks on Colab, they can continue to eat up memory,
 you can kill them with `! pkill -9 python3` and check with `! nvidia-smi` that GPU memory is freed.
