@@ -1,4 +1,4 @@
-import keras
+from tensorflow import keras
 
 
 def load_dataset(flatten=False):
