@@ -2,10 +2,10 @@
 # -*- coding: utf-8 -*-
 from collections import defaultdict
 import numpy as np
-from keras.models import save_model
-import tensorflow as tf
-import keras
-from keras import backend as K
+import tensorflow.compat.v1 as tf
+from tensorflow.compat.v1 import keras
+from tensorflow.compat.v1.keras import backend as K
+from tensorflow.compat.v1.keras.models import save_model
 import tqdm_utils
 
 
