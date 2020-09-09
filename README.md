@@ -15,6 +15,7 @@ Here's how you can use it:
 ! shred -u setup_google_colab.py
 ! wget https://raw.githubusercontent.com/hse-aml/intro-to-dl/master/setup_google_colab.py -O setup_google_colab.py
 import setup_google_colab
+!pip install q keras==2.0.6
 # please, uncomment the week you're working on
 # setup_google_colab.setup_week1()
 # setup_google_colab.setup_week2()
